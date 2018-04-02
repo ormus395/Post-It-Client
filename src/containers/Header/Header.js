@@ -1,26 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect, withRouter } from "react-router-dom";
 
 import * as actions from "../../store/actions";
 class Header extends Component {
-  login = e => {
-    e.preventDefault();
-    this.props.login();
-  };
-
   renderContent() {
     switch (this.props.auth) {
-      // case null:
-      //   return (
-      //     <li>
-      //       <a onClick={this.login}>Local Login</a>
-      //     </li>
-      //   );
-      // case false:
-      //   <li>
-      //     <a onClick={this.login}>Local Login</a>
-      //   </li>;
+      case null:
+        return <li />;
+      case false:
+        <li className="" />;
       default:
         return [
           <li key="1">
@@ -39,7 +28,7 @@ class Header extends Component {
     }
   }
   render() {
-    console.log();
+    console.log(this.props);
     return (
       <nav>
         <div className="nav-wrapper container">
@@ -55,10 +44,4 @@ class Header extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    auth: state.auth
-  };
-};
-
-export default connect(mapStateToProps, actions)(Header);
+export default Header;

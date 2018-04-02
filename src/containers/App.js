@@ -2,19 +2,16 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-import Header from "./Header";
-import Landing from "./Landing";
-
-import * as actions from "../store/actions";
+import Header from "./Header/Header";
+import Landing from "./Landing/Landing";
 
 const Dashboard = () => <h2>Dashboard</h2>;
 const Post = () => <h2>new Post</h2>;
 const Messages = () => <h2>MEssages</h2>;
 
 class App extends Component {
-  componentDidMount() {
-    actions.fetchLocalUser();
-  }
+  componentDidMount() {}
+  componentDidUpdate() {}
   render() {
     return (
       <Router>
@@ -32,4 +29,4 @@ class App extends Component {
   }
 }
 
-export default connect(null, actions)(App);
+export default App;

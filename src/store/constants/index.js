@@ -1,4 +1,4 @@
-export const FETCH_LOCAL_USER = "fetch_local_user";
-export const FETCH_TOKEN = "fetch_token";
-export const FETCH_POSTS = "fetch_posts";
-export const LOGIN = "login";
+export const AUTH_START = "AUTH_START";
+export const AUTH_FAIL = "AUTH_FAILS";
+export const AUTH_SUCCESS = "AUTH_SUCCESS";
+export const AUTH = "AUTH";

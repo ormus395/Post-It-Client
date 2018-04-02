@@ -1,15 +1,23 @@
-import { FETCH_LOCAL_USER, LOGIN } from "../constants";
+import * as types from "../constants";
 
-export default function(state = null, action) {
+const initialState = {
+  user: null,
+  token: null,
+  error: null,
+  loading: null
+};
+
+const auth = (state, action) => {};
+
+const authStart = (state, action) => {};
+
+const authFail = (state, action) => {};
+
+const authSuccess = (state, action) => {};
+
+export default function(state = initialState, action) {
   console.log(action);
   switch (action.type) {
-    case FETCH_LOCAL_USER:
-      return action.payload || false;
-    case LOGIN:
-      let user = JSON.stringify(action.payload.user);
-      localStorage.setItem("token", action.payload.token);
-      localStorage.setItem("user", user);
-      return action.payload.user;
     default:
       return state;
   }

@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 
 //Dev container/ store/ ect... imports
 import "materialize-css/dist/css/materialize.min.css";
+import "materialize-css/dist/js/materialize.min.js";
 import App from "./containers/App";
 import store from "./store";
 

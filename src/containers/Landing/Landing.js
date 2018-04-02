@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import * as actions from "../../store/actions";
+import * as actions from "../../store/actions/auth";
 
 class Landing extends Component {
   constructor(props) {
     super(props);
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      mode: "signUp"
     };
   }
 
@@ -15,44 +16,64 @@ class Landing extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  register = e => {
+  handleSubmit = e => {
     e.preventDefault();
-    this.props.register(this.state);
+    this.props.onAuth({
+      username: this.state.username,
+      password: this.state.password
+    });
   };
 
   render() {
     return (
       <div className="row">
-        <form className="col s12" onSubmit={this.register}>
+        <form className="col s12">
           <div className="row">
             <div className="input-field col s6">
               <input
                 id="username"
                 type="text"
                 className="validate"
-                name="username"
                 onChange={this.handleChange}
                 value={this.state.username}
+                name="username"
               />
-              <label htmlFor="username">username</label>
+              <label htmlFor="username">Username</label>
             </div>
+          </div>
+          <div className="row">
             <div className="input-field col s6">
               <input
                 id="password"
                 type="password"
                 className="validate"
-                name="password"
                 onChange={this.handleChange}
                 value={this.state.password}
+                name="password"
               />
-              <label htmlFor="password">password</label>
+              <label htmlFor="password">Password</label>
             </div>
           </div>
-          <input type="submit" value="Register" className="btn" />
+          <button
+            className="btn waves-effect waves-light"
+            type="submit"
+            name="action"
+            onClick={this.handleSubmit}
+          >
+            Submit
+          </button>
         </form>
       </div>
     );
   }
 }
 
-export default connect(null, actions)(Landing);
+const mapDispatchToProps = dispatch => {
+  return {
+    onAuth: user => {
+      dispatch(actions.auth(user));
+    }
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Landing);
