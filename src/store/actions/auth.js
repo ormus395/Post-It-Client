@@ -22,12 +22,31 @@ export const authFail = error => {
   };
 };
 
-export const auth = (user, mode) => async dispatch => {
+export const auth = (user, type) => async dispatch => {
+  console.log(type);
   dispatch(authStart());
   const authData = {
     username: user.username,
     password: user.password
   };
-  const res = await axios.post("/api/users/new", authData);
-  dispatch({ type: types.AUTH, payload: res.data });
+  try {
+    //type returns either Sing-In, or REgister
+    if (type === "Register") {
+      const res = await axios.post("/api/users/new", authData);
+      dispatch({ type: types.AUTH_SUCCESS, payload: res.data });
+    } else {
+      const res = await axios.post("/api/users/login", authData);
+      localStorage.setItem("token", res.data.token);
+      dispatch({ type: types.AUTH_SUCCESS, payload: res.data });
+    }
+  } catch (e) {
+    dispatch(authFail(e));
+  }
+};
+
+export const logout = () => {
+  localStorage.removeItem("token");
+  return {
+    type: types.LOGOUT
+  };
 };

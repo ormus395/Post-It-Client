@@ -2,14 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { NavLink, Redirect, withRouter } from "react-router-dom";
 
-import * as actions from "../../store/actions";
 class Header extends Component {
   renderContent() {
     switch (this.props.auth) {
       case null:
-        return <li />;
+        return null;
       case false:
-        <li className="" />;
+        return null;
       default:
         return [
           <li key="1">
@@ -22,7 +21,7 @@ class Header extends Component {
             <NavLink to="/post/new">PostIt</NavLink>
           </li>,
           <li key="4">
-            <a onClick={this.logout}>Log Out</a>
+            <NavLink to="/logout">Logout</NavLink>
           </li>
         ];
     }
@@ -44,4 +43,10 @@ class Header extends Component {
   }
 }
 
-export default Header;
+const mapStateToProps = state => {
+  return {
+    isLoggedIn: state.auth.token
+  };
+};
+
+export default connect(mapStateToProps)(Header);
