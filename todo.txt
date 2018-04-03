@@ -1,8 +1,12 @@
-1. Need to get complete Auth Working
-2. Redirect after login and regester
-3. change store after register and login
-4. Get Posting Working
-5. Get logout working
+1. Finish UserCard component
+2. finish poster component
+3. Get Posting Working
 
 
 //Action creator for auth start, return type for auth start -> this will start auth process which will call auth actionCreator, auth will take in user info, and make ajax call to backend -> the return result will call authSuccess(take in userinfo and token, submit to local storage, and redirect to feed page/ dashboard), authFail will alert user of fail, and keep them on landing page
+
+DONE's
+1. Need to get complete Auth Working
+2. Redirect after login and regester
+3. change store after register and login
+4. Get logout working

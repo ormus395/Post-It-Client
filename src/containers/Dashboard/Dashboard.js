@@ -9,10 +9,16 @@ class Dashboard extends Component {
     return (
       <div>
         <h3>Dashboard</h3>
-        <div>
-          <UserCard />
-          <NewsFeed />
-          <ChatPanel />
+        <div className="row" style={{ border: "2px solid black" }}>
+          <div className="col s3">
+            <UserCard />
+          </div>
+          <div className="col s7">
+            <NewsFeed />
+          </div>
+          <div className="col s2">
+            <ChatPanel />
+          </div>
         </div>
       </div>
     );
