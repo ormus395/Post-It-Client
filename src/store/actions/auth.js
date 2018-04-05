@@ -33,6 +33,7 @@ export const auth = (user, type) => async dispatch => {
     //type returns either Sing-In, or REgister
     if (type === "Register") {
       const res = await axios.post("/api/users/new", authData);
+      localStorage.setItem("token", res.data.token);
       dispatch({ type: types.AUTH_SUCCESS, payload: res.data });
     } else {
       const res = await axios.post("/api/users/login", authData);

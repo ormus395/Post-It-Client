@@ -6,11 +6,12 @@ let tempStyle = {
 };
 
 const UserCard = props => {
+  console.log(props);
   return (
     <div className="card">
       <div className="card-image">
         <img src={props.userImg || "http://via.placeholder.com/200x150"} />
-        <span className="card-title">{props.username || "Temp"}</span>
+        <span className="card-title">{props.user.username || "Temp"}</span>
         <a className="btn-floating halfway-fab waves-effect waves-light red">
           <i className="material-icons">&#43;</i>
         </a>

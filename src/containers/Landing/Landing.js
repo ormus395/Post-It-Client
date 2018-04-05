@@ -81,7 +81,7 @@ class Landing extends Component {
             name="Sign-In"
             onClick={this.handleSubmit}
           >
-            Sing In
+            Sign In
           </button>
           <button
             onClick={this.handleSubmit}
